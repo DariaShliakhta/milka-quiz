@@ -210,7 +210,8 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!resultPage) {
                 resultPage = "unique-milka.html";
             }
-            window.location.href = resultPage; // Перенаправление на нужную страницу
+            window.location.href = `./${resultPage}`;
+            // Перенаправление на нужную страницу
         });
     }
 });
