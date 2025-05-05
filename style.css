@@ -13,7 +13,7 @@ body {
 
 main {
     flex: 1;
-    background: url(/milka/img/Background_change.svg) no-repeat;
+    background: url(img/Background_change.svg) no-repeat;
     background-size: cover;
 
 }
