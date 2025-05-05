@@ -1,0 +1,87 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: "Fredoka", sans-serif;
+    background: #F8F4FF;
+}
+
+main {
+    flex: 1;
+    background: url(/milka/img/Background_change.svg) no-repeat;
+    background-size: cover;
+
+}
+
+
+.d-flex {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    z-index: 3;
+}
+
+.container {
+    width: 100%;
+    overflow: hidden;
+    height: 100vh;
+}
+
+
+.title_one {
+    font-size: 80px;
+    font-weight: 600;
+    color: #D8C6FF;
+    padding-top: 66px;
+}
+
+.title_two {
+    font-size: 80px;
+    font-weight: 600;
+    color: #D8C6FF;
+}
+
+.milka_logo {
+    width: 600px;
+    height: auto;
+}
+
+.main_btn {
+    font-family: 'Fredoka', sans-serif;
+    width: 400px;
+    height: auto;
+    font-size: 60px;
+    font-weight: 600;
+    text-align: center;
+    color: #7F69AD;
+    border-radius: 50px;
+    background: #FFEE8C;
+    margin-top: 50px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    padding-left: 32px;
+    padding-right: 32px;
+    text-decoration: none;
+    line-height: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: scale(1);
+    box-shadow: 0 4px 12px rgba(127, 105, 173, 0.2);
+}
+
+.main_btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(127, 105, 173, 0.3);
+    background: #fae679;
+}
+
+.main_btn:active {
+    transform: scale(0.97);
+    box-shadow: 0 2px 8px rgba(127, 105, 173, 0.2);
+}

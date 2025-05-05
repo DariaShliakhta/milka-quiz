@@ -1,0 +1,235 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: "Fredoka", sans-serif;
+    background: #F8F4FF;
+}
+
+main {
+    flex: 1;
+}
+
+.title {
+    background: url(/milka/img/vecteezy_realistic-chocolate.svg) no-repeat;
+    background-size: cover;
+    width: 100%;
+    padding-top: 12vw;
+    position: relative;
+    z-index: 1;
+}
+
+.d-flex {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    z-index: 3;
+}
+
+.container {
+    width: 100%;
+}
+
+/*RESULT_ONE*/
+.cream {
+    overflow: hidden;
+    height: 100vh;
+    position: relative;
+}
+
+.cream::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url(./img/cream-splash.png) no-repeat center center;
+    background-size: 100% auto;
+    filter: blur(3px);
+    transform: scale(1.2) translateY(10%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.cream>* {
+    z-index: 1;
+}
+
+.label {
+    text-decoration: none;
+    font-size: 75px;
+    font-weight: 600;
+    color: #6b4226;
+    text-shadow: 6px 6px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 2vh;
+    z-index: 2;
+}
+
+.chocolate {
+    width: 57vw;
+    height: 100%;
+    filter: drop-shadow(0 0 50px #FFF4DD) drop-shadow(0 0 50px #FFF4DD);
+}
+
+.flower {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform: translate(-40%, 10%);
+    width: 450px;
+    height: auto;
+    aspect-ratio: 1.2/1;
+}
+
+/*RESULT_TWO*/
+.chocolate_backgr {
+    overflow: hidden;
+    height: 100vh;
+    position: relative;
+}
+
+.chocolate_backgr::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url(./img/7025955-Photoroom.png) no-repeat center center;
+    background-size: contain;
+    filter: blur(2px);
+    transform: scale(1.7) translateY(16%) translateX(-1%) rotate(3deg);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.chocolate_backgr>* {
+    z-index: 1;
+}
+
+.label_2 {
+    text-decoration: none;
+    font-size: 75px;
+    font-weight: 600;
+    color: #FFF1D7;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.48);
+    z-index: 4;
+}
+
+.chocolate_2 {
+    width: 57vw;
+    height: 100%;
+    filter: drop-shadow(0 0 200px #493222) drop-shadow(0 0 50px #493222);
+}
+
+/*RESULT_TREE*/
+.raspberry_backgr {
+    overflow: hidden;
+    height: 100vh;
+    position: relative;
+}
+
+.raspberry_backgr::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url(./img/raspb.png) no-repeat center center;
+    background-size: cover;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.raspberry_backgr>* {
+    z-index: 1;
+}
+
+.label_3 {
+    text-decoration: none;
+    font-size: 75px;
+    font-weight: 600;
+    color: #50467B;
+    text-shadow: 0px 4px 4px rgba(127, 105, 173, 0.61);
+    margin-bottom: 2vh;
+    z-index: 2;
+}
+
+.chocolate_3 {
+    width: 57vw;
+    height: 100%;
+    filter: drop-shadow(0 0 50px #C55D78);
+}
+
+.raspberry_splash {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform: scale(1.3) translate(-20%, 3%);
+    width: 500px;
+    height: auto;
+    aspect-ratio: 1.2/1;
+}
+
+/*RESULT_FOUR*/
+.label_4 {
+    text-decoration: none;
+    font-size: 75px;
+    font-weight: 600;
+    color: #605478;
+    text-shadow: 0px 4px 4px rgba(127, 105, 173, 0.61);
+    z-index: 2;
+}
+
+.chocolate_4 {
+    width: 57vw;
+    height: 100%;
+    filter: drop-shadow(0 0 200px #6FA142);
+    z-index: 3;
+}
+
+.nuts_backgr {
+    overflow: hidden;
+    height: 100vh;
+    position: relative;
+    isolation: isolate;
+}
+
+.nuts_backgr::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url(./img/vecteezy_chocolate-waves.png) no-repeat bottom;
+    background-size: cover;
+    z-index: 4;
+    pointer-events: none;
+}
+
+.nuts_backgr>* {
+    z-index: 1;
+}
+
+.nuts-left {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform: translate(0, 0);
+    width: 550px;
+    height: auto;
+    aspect-ratio: 1.2/1;
+    z-index: 0;
+}
+
+
+.nuts-right {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: translate(0, 0);
+    width: 50vw;
+    max-width: 550px;
+    height: auto;
+    aspect-ratio: 1.4/1;
+    z-index: 1;
+    pointer-events: none;
+}
