@@ -85,7 +85,7 @@ main {
     box-shadow: 0 2px 8px rgba(127, 105, 173, 0.2);
 }
 
-@media screen and (max-width: 412px) {
+@media screen and (max-width: 700px) {
     main {
         flex: 1;
         background: url(img/Background_change.svg) no-repeat;

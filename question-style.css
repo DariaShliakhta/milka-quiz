@@ -131,7 +131,7 @@ main {
     text-align: left;
 }
 
-@media screen and (max-width: 412px) {
+@media screen and (max-width: 700px) {
     main {
         flex: 1;
         background: url(img/Background_change.svg) no-repeat;

@@ -234,7 +234,7 @@ main {
     pointer-events: none;
 }
 
-@media screen and (max-width: 412px) {
+@media screen and (max-width: 700px) {
     .title {
         background: none;
         position: relative;
