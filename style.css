@@ -15,7 +15,6 @@ main {
     flex: 1;
     background: url(img/Background_change.svg) no-repeat;
     background-size: cover;
-
 }
 
 
@@ -84,4 +83,51 @@ main {
 .main_btn:active {
     transform: scale(0.97);
     box-shadow: 0 2px 8px rgba(127, 105, 173, 0.2);
+}
+
+@media screen and (max-width: 412px) {
+    main {
+        flex: 1;
+        background: url(img/Background_change.svg) no-repeat;
+        background-size: cover;
+    }
+
+    .title_one {
+        font-size: 50px;
+        font-weight: 600;
+        color: #D8C6FF;
+        padding-top: 301px;
+    }
+
+    .title_two {
+        font-size: 50px;
+        font-weight: 600;
+        color: #D8C6FF;
+    }
+
+    .milka_logo {
+        width: 358px;
+        height: auto;
+    }
+
+    .main_btn {
+        font-family: 'Fredoka', sans-serif;
+        width: 259px;
+        height: auto;
+        font-size: 35px;
+        font-weight: 600;
+        text-align: center;
+        color: #7F69AD;
+        border-radius: 50px;
+        background: #FFEE8C;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 83px;
+        padding-right: 83px;
+        text-decoration: none;
+        line-height: 1;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transform: scale(1);
+        box-shadow: 0 4px 12px rgba(127, 105, 173, 0.2);
+    }
 }

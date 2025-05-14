@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const answers = document.querySelectorAll('.answer-block');
     const finishBtn = document.querySelector('[data-finish]');
+    const nextBtn = document.querySelector('[data-next]');
     let selectedAnswer = null;
 
     // Все возможные комбинации для каждого результата
@@ -83,31 +84,59 @@ document.addEventListener('DOMContentLoaded', function () {
         ]
     };
 
-    // Добавляем обработчики кликов на ответы
+    // Добавляем обработчик клика на ответы
     answers.forEach(block => {
         block.addEventListener('click', () => {
-            answers.forEach(b => b.classList.remove('selected'));
-            block.classList.add('selected');
-            selectedAnswer = block.dataset.answer;
+            answers.forEach(b => b.classList.remove('selected')); // Удаляем выделение у всех
+            block.classList.add('selected'); // Добавляем выделение выбранному блоку
+            selectedAnswer = Number(block.dataset.answer); // Запоминаем выбранный ответ как число
 
-            // Определяем номер текущего вопроса
-            let currentQuestionIndex = parseInt(document.querySelector(".question").textContent.split("/")[0]) - 1;
-            let allAnswers = JSON.parse(localStorage.getItem("milkaAnswers") || "[]");
+            // Записываем ответ в localStorage, если выбран ответ
+            if (selectedAnswer !== null && selectedAnswer !== undefined && selectedAnswer !== "") {
+                let currentQuestionIndex = parseInt(document.querySelector(".question").textContent.split("/")[0]) - 1;
+                let allAnswers = JSON.parse(localStorage.getItem("milkaAnswers") || "[]");
 
-            // Записываем ответ пользователя в массив, гарантируя 5 элементов
-            allAnswers[currentQuestionIndex] = selectedAnswer;
-            localStorage.setItem("milkaAnswers", JSON.stringify(allAnswers));
+                if (!Array.isArray(allAnswers)) {
+                    allAnswers = [];
+                }
+
+                allAnswers[currentQuestionIndex] = selectedAnswer;
+                localStorage.setItem("milkaAnswers", JSON.stringify(allAnswers));
+            }
         });
     });
 
+    // Проверка перед переходом к следующему вопросу
+    if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+            let currentQuestionIndex = parseInt(document.querySelector(".question").textContent.split("/")[0]) - 1;
+            let allAnswers = JSON.parse(localStorage.getItem("milkaAnswers") || "[]");
+
+            if (!Array.isArray(allAnswers)) {
+                allAnswers = [];
+            }
+
+            // Проверка, выбран ли ответ
+            if (!allAnswers[currentQuestionIndex]) {
+                e.preventDefault();
+                alert("Пожалуйста, выберите ответ перед переходом к следующему вопросу!");
+            }
+        });
+    }
+
+    // Проверка перед завершением теста
     if (finishBtn) {
         finishBtn.addEventListener('click', (e) => {
             let allAnswers = JSON.parse(localStorage.getItem("milkaAnswers") || "[]");
 
-            // Проверяем, что все ответы выбраны
-            if (allAnswers.length < 5 || allAnswers.includes(undefined) || allAnswers.includes("")) {
+            if (!Array.isArray(allAnswers)) {
+                allAnswers = [];
+            }
+
+            // Проверка, все ли ответы заполнены
+            if (allAnswers.filter(answer => answer !== null && answer !== undefined && answer !== "").length < 5) {
                 e.preventDefault();
-                alert("Пожалуйста, ответьте на все вопросы!");
+                alert("Пожалуйста, ответьте на все вопросы перед завершением теста!");
                 return;
             }
 
