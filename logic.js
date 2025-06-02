@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const nextBtn = document.querySelector('[data-next]');
     let selectedAnswer = null;
 
-    // Все возможные комбинации для каждого результата
     const results = {
         "result1": [
             "1,1,1,1,1", "1,1,1,1,2", "1,1,1,1,3",
@@ -84,14 +83,14 @@ document.addEventListener('DOMContentLoaded', function () {
         ]
     };
 
-    // Добавляем обработчик клика на ответы
     answers.forEach(block => {
         block.addEventListener('click', () => {
-            answers.forEach(b => b.classList.remove('selected')); // Удаляем выделение у всех
-            block.classList.add('selected'); // Добавляем выделение выбранному блоку
-            selectedAnswer = Number(block.dataset.answer); // Запоминаем выбранный ответ как число
+            answers.forEach(b => b.classList.remove('selected'));
+            block.classList.add('selected');
+            selectedAnswer = Number(block.dataset.answer);
+            console.log(selectedAnswer);
 
-            // Записываем ответ в localStorage, если выбран ответ
+
             if (selectedAnswer !== null && selectedAnswer !== undefined && selectedAnswer !== "") {
                 let currentQuestionIndex = parseInt(document.querySelector(".question").textContent.split("/")[0]) - 1;
                 let allAnswers = JSON.parse(localStorage.getItem("milkaAnswers") || "[]");
@@ -106,25 +105,23 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Проверка перед переходом к следующему вопросу
+
     if (nextBtn) {
         nextBtn.addEventListener('click', (e) => {
-            let currentQuestionIndex = parseInt(document.querySelector(".question").textContent.split("/")[0]) - 1;
             let allAnswers = JSON.parse(localStorage.getItem("milkaAnswers") || "[]");
 
             if (!Array.isArray(allAnswers)) {
                 allAnswers = [];
             }
 
-            // Проверка, выбран ли ответ
-            if (!allAnswers[currentQuestionIndex]) {
+
+            if (!allAnswers[selectedAnswer]) {
                 e.preventDefault();
-                alert("Пожалуйста, выберите ответ перед переходом к следующему вопросу!");
+                alert("Please choose your answer ");
             }
         });
     }
 
-    // Проверка перед завершением теста
     if (finishBtn) {
         finishBtn.addEventListener('click', (e) => {
             let allAnswers = JSON.parse(localStorage.getItem("milkaAnswers") || "[]");
@@ -133,19 +130,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 allAnswers = [];
             }
 
-            // Проверка, все ли ответы заполнены
+
             if (allAnswers.filter(answer => answer !== null && answer !== undefined && answer !== "").length < 5) {
                 e.preventDefault();
-                alert("Пожалуйста, ответьте на все вопросы перед завершением теста!");
+                alert("Please choose your answer ");
                 return;
             }
 
             const resultKey = allAnswers.join(",");
-            console.log("Финальный ключ:", resultKey);
+            console.log("Final key:", resultKey);
 
             let resultPage = null;
 
-            // Проверка всех возможных комбинаций
             for (let [milkaType, combinations] of Object.entries(results)) {
                 if (combinations.includes(resultKey)) {
                     resultPage = `${milkaType.toLowerCase().replace(/\s+/g, '-')}.html`;
@@ -153,12 +149,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
 
-            // Если не найдено совпадение, направляем на универсальную страницу (например, "unique-milka.html")
             if (!resultPage) {
-                resultPage = "unique-milka.html";
+                alert("Sorry, no matching result was found.");
+            } else {
+                window.location.href = `./${resultPage}`;
             }
-            window.location.href = `./${resultPage}`;
-            // Перенаправление на нужную страницу
         });
     }
 });
